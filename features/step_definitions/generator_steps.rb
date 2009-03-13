@@ -44,7 +44,7 @@ When /^I generate a (.*)project named '((?:\w|-|_)+)' that is '(.*)'$/ do |testi
   end
 
 
-  arguments = ['--directory', "#{@working_dir}/#{@name}", '--summary', @summary, @use_cucumber ? '--cucumber' : nil, "--#{@testing_framework}", @name].compact
+  arguments = ['--directory', "#{@working_dir}/#{@name}", '--summary', @summary, @use_cucumber ? '--cucumber' : nil, @testing_framework ? "--#{@testing_framework}" : nil, @name].compact
   @stdout = OutputCatcher.catch_out do
     Jeweler::Generator::Application.run! *arguments
   end
